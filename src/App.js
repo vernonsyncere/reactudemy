@@ -6,9 +6,9 @@ import Person from './Person/Person';
 const App = props => {
   const [personsState, setPersonsState] = useState({
     persons: [
-      {name: 'Max', age: 21},
-      {name: 'Maniu', age: 22},
-      {name: 'Stephanie', age: 71}
+      {id:'nkbjfdsad', name: 'Max', age: 21},
+      {id:'nihsaubd', name: 'Maniu', age: 22},
+      {id:'bnhgjhkj', name: 'Stephanie', age: 71}
     ],
     otherState: 'Some other Value',
     showPersons: false
@@ -17,17 +17,7 @@ const App = props => {
 
  
 
-  const switchNameHandler = (newName) => {
-    // console.log("Was Clicked");
-    setPersonsState({
-      persons: [
-        {name: 'Maximillion', age: 26},
-        {name: newName, age: 22},
-        {name: 'Stephanie', age: 21}
-      ],
-      
-    })
-  }
+
 
   const nameChangedHandler = (event) => {
     setPersonsState({
@@ -54,15 +44,30 @@ const App = props => {
     });
     console.log(personsState.showPersons);
   }
+  
+  const deletePersonHandler = (personIndex) => {
+    const doesShow = personsState.showPersons
+    // const persons = personsState.persons.slice();
+    const persons = [...personsState.persons];
+    persons.splice(personIndex,1)
+    setPersonsState({persons: persons,
+      otherState: 'Some other Value',
+      showPersons: doesShow
+      
+    })
+  }
     let persons = null;
 
     if (personsState.showPersons) {
       persons = (
         <div>
-          {personsState.persons.map(person => {
+          {personsState.persons.map((person, index) => {
             return <Person 
+            click={() => deletePersonHandler(index)}
             name={person.name}
-            age={person.age}/>
+            age={person.age}
+            key={person.id}
+            />
           })}
           </div> 
       );
