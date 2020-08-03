@@ -54,19 +54,11 @@ const App = props => {
     });
     console.log(personsState.showPersons);
   }
+    let persons = null;
 
-
-    return (
-
-      <div className="App">
-        <h1>Hi, I'm a React App</h1>
-        <p>This is working</p>
-        <button onClick={togglePersonHandler}>Toggle Persons</button>
-         
-        
-      {
-      personsState.showPersons === true ?
-          <div>
+    if (personsState.showPersons) {
+      persons = (
+        <div>
               <Person 
               name={personsState.persons[0].name} 
               age={personsState.persons[0].age}/>
@@ -78,8 +70,17 @@ const App = props => {
               name={personsState.persons[2].name} 
               age={personsState.persons[2].age}
               click={switchNameHandler.bind(this, "myMymy")}>My Hobbies are as such:</Person>
-          </div> : null
-        }
+          </div> 
+      );
+    }
+
+    return (
+
+      <div className="App">
+        <h1>Hi, I'm a React App</h1>
+        <p>This is working</p>
+        <button onClick={togglePersonHandler}>Toggle Persons</button>
+        {persons}
       </div>
   
     );
