@@ -10,8 +10,12 @@ const App = props => {
       {name: 'Maniu', age: 22},
       {name: 'Stephanie', age: 71}
     ],
-    otherState: 'Some other Value'
+    otherState: 'Some other Value',
+    showPersons: false
+    
   });
+
+ 
 
   const switchNameHandler = (newName) => {
     // console.log("Was Clicked");
@@ -36,24 +40,46 @@ const App = props => {
     })
   }
 
+  const togglePersonHandler = () => {
+    const doesShow = personsState.showPersons;
+    console.log(doesShow)
+    setPersonsState({
+      persons: [
+        {name: 'Max', age: 21},
+        {name: 'Maniu', age: 22},
+        {name: 'Stephanie', age: 71}
+      ],
+      otherState: 'Some other Value',
+      showPersons: !doesShow
+    });
+    console.log(personsState.showPersons);
+  }
+
 
     return (
 
       <div className="App">
         <h1>Hi, I'm a React App</h1>
         <p>This is working</p>
-        <button onClick={() => switchNameHandler("First off")}>Switch Name</button>
-        <Person 
-        name={personsState.persons[0].name} 
-        age={personsState.persons[0].age}/>
-        <Person 
-        name={personsState.persons[1].name} 
-        age={personsState.persons[1].age}
-        changed={nameChangedHandler}/>
-        <Person 
-        name={personsState.persons[2].name} 
-        age={personsState.persons[2].age}
-        click={switchNameHandler.bind(this, "myMymy")}>My Hobbies are as such:</Person>
+        <button onClick={togglePersonHandler}>Toggle Persons</button>
+         
+        
+      {
+      personsState.showPersons === true ?
+          <div>
+              <Person 
+              name={personsState.persons[0].name} 
+              age={personsState.persons[0].age}/>
+              <Person 
+              name={personsState.persons[1].name} 
+              age={personsState.persons[1].age}
+              changed={nameChangedHandler}/>
+              <Person 
+              name={personsState.persons[2].name} 
+              age={personsState.persons[2].age}
+              click={switchNameHandler.bind(this, "myMymy")}>My Hobbies are as such:</Person>
+          </div> : null
+        }
       </div>
   
     );
@@ -62,4 +88,3 @@ const App = props => {
 }
 
 export default App;
-
