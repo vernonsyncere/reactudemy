@@ -1,22 +1,22 @@
 import React, { useState } from 'react';
 import './App.css';
-import styled from 'styled-components';
+// import styled from 'styled-components';
 
 import Person from './Person/Person';
 
-const StyledButton = styled.button`
-  background-color: ${props => props.alt ? 'red' : 'green' };
-  color: white;
-  font: inherit;
-  border: 1px solid blue;
-  padding: 8px;
-  cursor: pointer;
+// const StyledButton = styled.button`
+//   background-color: ${props => props.alt ? 'red' : 'green' };
+//   color: white;
+//   font: inherit;
+//   border: 1px solid blue;
+//   padding: 8px;
+//   cursor: pointer;
   
-  &:hover{
-    background-color: ${props => props.alt ? 'salmon' : 'lightgreen' };
-    color: black;
-  }
-`;
+//   &:hover{
+//     background-color: ${props => props.alt ? 'salmon' : 'lightgreen' };
+//     color: black;
+//   }
+// `;
 
 const App = props => {
   const [personsState, setPersonsState] = useState({
@@ -131,9 +131,9 @@ const App = props => {
       <div className="App">
         <h1>Hi, I'm a React App</h1>
         <p className={classes.join(' ')}>This is working</p>
-        <StyledButton alt={personsState.showPersons} onClick={togglePersonHandler}>
+        <button className="button" alt={personsState.showPersons} onClick={togglePersonHandler}>
           Toggle Persons
-        </StyledButton>
+        </button>
         {persons}
       </div>
      
