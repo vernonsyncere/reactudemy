@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 
+
 import Person from './Person/Person';
 
 const App = props => {
@@ -70,7 +71,11 @@ const App = props => {
     font: 'inherit',
     border: '1px solid blue',
     padding: '8px',
-    cursor: 'pointer'
+    cursor: 'pointer',
+    ':hover':{
+      backgroundColor: 'lightgreen',
+      color: 'black'
+    }
   }
     let persons = null;
 
@@ -91,6 +96,10 @@ const App = props => {
       );
 
       style.backgroundColor='red';
+      style[':hover']= {
+        backgroundColor: 'salmon',
+      color: 'black'
+      }
     }
 
     let classes = [];
@@ -104,7 +113,7 @@ const App = props => {
     
 
     return (
-
+      
       <div className="App">
         <h1>Hi, I'm a React App</h1>
         <p className={classes.join(' ')}>This is working</p>
@@ -113,6 +122,7 @@ const App = props => {
         onClick={togglePersonHandler}>Toggle Persons</button>
         {persons}
       </div>
+     
   
     );
     
